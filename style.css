@@ -15,3 +15,7 @@ root {
     text-decoration: line-through;
     background-color: rgb(190, 196, 201);
 }
+
+#yapilacaklar, #yapilanlar {
+    cursor: pointer;
+}
