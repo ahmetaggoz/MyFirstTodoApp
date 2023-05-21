@@ -15,19 +15,23 @@
   <body>
     <div class="container">
       <div class="row mb-3 mt-2">
-        <ul class="nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page"
-              >To Do APP</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Yapıldı</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Yapılacak</a>
-          </li>
-        </ul>
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand">To do App</a>
+            <form class="d-flex">
+              <input
+                type="text"
+                class="form-control me-2"
+                placeholder="Görev Ekle"
+                aria-label="Görev Ekle"
+                id="gorev_gir"
+              />
+              <button class="btn btn-outline-success" id="gorev_ekle_btn">
+                Ekle
+              </button>
+            </form>
+          </div>
+        </nav>
       </div>
       <div class="row">
         <div class="col">
