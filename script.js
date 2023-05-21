@@ -19,27 +19,46 @@ gorev_ekle_btn.addEventListener("click", (event)=>{
     localStorage.setItem("gorev_listesi", JSON.stringify(gorev_listesi))
     gorevleri_göster();
     event.preventDefault();
-    console.log(gorev_listesi)
 })
 
 function gorevleri_göster(){
-
     listem = document.querySelector("#ul_gorevler");
     listem.innerHTML = "";
-    for(let gorev of gorev_listesi){
-        let gorevlerim = `
-            <li class="list-group-item" onclick="yapildimi(this)" >
+            for(let gorev of gorev_listesi){
+                let gorevlerim = `
+                <li class="list-group-item ${gorev.durum}"  onclick="yapildimi(this)" id="${gorev.id}" >
                 ${gorev.gorev_adi}
-            </li>
-        `
-        listem.insertAdjacentHTML("beforeend", gorevlerim)
-    }
+                </li>
+                `
+                listem.insertAdjacentHTML("beforeend", gorevlerim)
+        }
+        var items = document.querySelectorAll(".list-group-item")
+        items.forEach((m)=>{
+            if(m.classList.contains("completed")){
+                m.classList = "list-group-item cizik"
+            }
+        })
+        
+        
+    
 }
 
 function yapildimi(tiklandi){
-    if(tiklandi.classList.contains("cizik")){
-        tiklandi.classList.remove("cizik")
-    }else{
-        tiklandi.classList.add("cizik")
-    }
+    
+        for(let gorev of gorev_listesi){
+            if(tiklandi.id == gorev.id){
+                if(tiklandi.classList.contains("cizik")){
+                    tiklandi.classList.remove("cizik") 
+                    gorev.durum = "pending"
+                }else{
+                    tiklandi.classList.add("cizik") 
+                    gorev.durum = "completed" 
+                }
+            }
+            localStorage.setItem("gorev_listesi", JSON.stringify(gorev_listesi))
+        }
+
+        
+    
 }
+
