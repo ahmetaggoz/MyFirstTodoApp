@@ -40,6 +40,7 @@ function gorevleri_göster(){
         })
         
         
+        
     
 }
 
@@ -56,9 +57,5 @@ function yapildimi(tiklandi){
                 }
             }
             localStorage.setItem("gorev_listesi", JSON.stringify(gorev_listesi))
-        }
-
-        
-    
+        }   
 }
-
