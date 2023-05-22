@@ -26,9 +26,11 @@ function gorevleri_göster(){
     listem.innerHTML = "";
             for(let gorev of gorev_listesi){
                 let gorevlerim = `
-                <li class="list-group-item ${gorev.durum}"  onclick="yapildimi(this)" id="${gorev.id}" >
+                
+                <li class="list-group-item ${gorev.durum} "  onclick="yapildimi(this)" id="${gorev.id}" >
                 ${gorev.gorev_adi}
                 </li>
+                
                 `
                 listem.insertAdjacentHTML("beforeend", gorevlerim)
         }
@@ -37,11 +39,7 @@ function gorevleri_göster(){
             if(m.classList.contains("completed")){
                 m.classList = "list-group-item cizik"
             }
-        })
-        
-        
-        
-    
+        })  
 }
 
 function yapildimi(tiklandi){
@@ -58,4 +56,45 @@ function yapildimi(tiklandi){
             }
             localStorage.setItem("gorev_listesi", JSON.stringify(gorev_listesi))
         }   
+}
+yapilacaklar("pending")
+function yapilacaklar(durum){
+    var btn_yapilacaklar = document.querySelector("#yapilacaklar")
+    btn_yapilacaklar.addEventListener("click", ()=>{
+        listem = document.querySelector("#ul_gorevler");
+        listem.innerHTML = "";
+        for(let gorev of gorev_listesi){
+            if(gorev.durum == durum){
+                let gorevlerim = `
+                
+                <li class="list-group-item ${gorev.durum} "  onclick="yapildimi(this)" id="${gorev.id}" >
+                ${gorev.gorev_adi}
+                </li>
+                
+                `
+                listem.insertAdjacentHTML("beforeend", gorevlerim)
+            }
+            
+        }
+    })
+}
+yapilanlar("completed")
+function yapilanlar(durum){
+    var btn_yapilanlar = document.querySelector("#yapilanlar")
+    btn_yapilanlar.addEventListener("click", ()=>{
+        listem = document.querySelector("#ul_gorevler");
+        listem.innerHTML = "";
+        for(let gorev of gorev_listesi){
+            if(gorev.durum == durum){
+                let gorevlerim = `
+                
+                <li class="list-group-item ${gorev.durum} "  onclick="yapildimi(this)" id="${gorev.id}" >
+                ${gorev.gorev_adi}
+                </li>
+                
+                `
+                listem.insertAdjacentHTML("beforeend", gorevlerim)
+            }
+        }
+    })
 }
